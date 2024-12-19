@@ -1,14 +1,14 @@
 variable "bucket_name" {
   description = "The name of the S3 bucket"
-  type        = string
+  type        = "monika-voda-assignment"
 }
 
 variable "file_path" {
   description = "The path to the file to upload"
-  type        = string
+  type        = "/d/index.html"
 }
 
 variable "allowed_ip" {
   description = "The IP address allowed to access the S3 bucket"
-  type        = string
+  type        = "103.189.98.196"
 }
