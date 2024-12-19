@@ -1,11 +1,10 @@
-AWS/terraform  Assignment:
+**AWS/terraform  Assignment:**
 
 -Create an S3 bucket using terraform and add a file in the S3 bucket
-
 -The file in the S3 bucket should be accessible only from a certain IP address(example. Your machine IP)
 
 
-Solution: 
+**Solution:** 
 
 1. Initialize Terraform:
     terraform init
