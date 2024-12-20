@@ -6,6 +6,16 @@ resource "aws_s3_bucket" "my_bucket" {
   bucket = var.bucket_name
 }
 
+resource "aws_s3_bucket_public_access_block" "block_public_access" {
+  bucket = aws_s3_bucket.my_bucket.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+
+}
+
 resource "aws_s3_bucket_policy" "my_bucket_policy" {
   bucket = aws_s3_bucket.my_bucket.id
 
@@ -27,8 +37,12 @@ resource "aws_s3_bucket_policy" "my_bucket_policy" {
   })
 }
 
-resource "aws_s3_bucket_object" "my_file" {
+resource "aws_s3_object" "my_file" {
   bucket = aws_s3_bucket.my_bucket.id
   key    = basename(var.file_path)
   source = var.file_path
+}
+
+output "file_url" {
+  value = "s3://${aws_s3_bucket.my_bucket.arn}/${aws_s3_object.my_file.key}"
 }
